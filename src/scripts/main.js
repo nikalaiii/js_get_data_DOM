@@ -3,7 +3,7 @@
 const values = document.querySelectorAll('.population');
 const avarage = document.querySelector('.average-population');
 const total = document.querySelector('.total-population');
-let totl = 0;
+let totalSum = 0;
 let items = 0;
 
 if (avarage && total) {
@@ -11,14 +11,16 @@ if (avarage && total) {
     const value = parseFloat(values[i].textContent);
 
     if (!isNaN(value)) {
-      totl += value;
+      totalSum += value;
       items++;
     }
   }
 
-  const avg = Math.round(totl / items);
+  const averageValue = items > 0 ? Math.round(totalSum / items) : 0;
 
-  avarage.textContent = avg;
+  const formattedTotal = totalSum.toLocaleString();
+  const formattedAverage = averageValue.toLocaleString();
 
-  total.textContent = totl;
+  total.textContent(formattedTotal);
+  avarage.textContent(formattedAverage);
 }
